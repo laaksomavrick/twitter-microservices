@@ -1,0 +1,16 @@
+version: '3'
+services:
+    cassandra:
+        image: 'cassandra:latest'
+        environment:
+            - Dcassandra.ignore_dc=true
+            - MAX_HEAP_SIZE=256M
+            - HEAP_NEWSIZE=64M
+        ports:
+            - '9042:9042'
+            - '9200:9200'
+        volumes:
+            - cassandradata:/cassandra
+
+volumes:
+  cassandradata:
