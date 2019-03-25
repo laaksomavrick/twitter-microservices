@@ -14,6 +14,6 @@
     "baseUrl": "./src",
     "esModuleInterop": true
   },
-  "include": ["services/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "common"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "**/__tests__/*"]
 }
