@@ -18,7 +18,7 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@nestjs/common@^6.0.0", "@nestjs/common@^6.0.2":
+"@nestjs/common@^6.0.0", "@nestjs/common@^6.0.2", "@nestjs/common@^6.0.3":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.0.3.tgz#4d65f22b8954f65a4816d4c4401e15dde3ff53c5"
   integrity sha512-OeuMZTBHtP28maKZKU8ADOlWpdjknbviXUpNCV1V6UezcyHo1Dp5L4hHVSvrxjgRAexjJZAc6BmOe3Ce36Ls6g==
@@ -27,7 +27,7 @@
     cli-color "1.4.0"
     uuid "3.3.2"
 
-"@nestjs/core@^6.0.0", "@nestjs/core@^6.0.2":
+"@nestjs/core@^6.0.0", "@nestjs/core@^6.0.2", "@nestjs/core@^6.0.3":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.0.3.tgz#2fadd2f207e3297c2ed545644df622db3117d842"
   integrity sha512-QFf4aTaexM5nY8pCIjo1NGh3VCCam6ng2iI1/PFioFFzKb8wmpHQmQ6yq05N0D10pfZ4IIcoupuuErkbknIEUw==
@@ -769,6 +769,8 @@ cassandra-driver@^4.0.0:
     "@nestjs/common" "^6.0.2"
     "@nestjs/core" "^6.0.2"
     cassandra-driver "^4.0.0"
+    class-transformer "^0.2.0"
+    class-validator "^0.9.1"
     convict "^4.4.1"
     reflect-metadata "^0.1.13"
     rxjs "^6.4.0"
@@ -822,6 +824,11 @@ ci-info@^1.5.0:
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.6.0.tgz#2ca20dbb9ceb32d4524a683303313f0304b1e497"
   integrity sha512-vsGdkwSCDpWmP80ncATX7iea5DWQemg1UgCW5J8tqjU3lYw4FBYuj89J0CTVomA7BEfvSZd84GmHko+MxFQU2A==
 
+class-transformer@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/class-transformer/-/class-transformer-0.2.0.tgz#e54b34112e8ef7f913ef938c81fed8ed949fc9c7"
+  integrity sha512-6N/5WkEmLZCKxyC2CAPYQIJt3pDZzDFag7AExpyWRm7CjaS/U62VDRU+Z2AUrQaNpnuiXRlli0so4PJUqGSVZQ==
+
 class-utils@^0.3.5:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/class-utils/-/class-utils-0.3.6.tgz#f93369ae8b9a7ce02fd41faad0ca83033190c463"
@@ -831,6 +838,14 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+class-validator@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/class-validator/-/class-validator-0.9.1.tgz#d60e58c5d14abca0a41bce38cf792ad4c46d1531"
+  integrity sha512-3wApflrd3ywVZyx4jaasGoFt8pmo4aGLPPAEKCKCsTRWVGPilahD88q3jQjRQwja50rl9a7rsP5LAxJYwGK8/Q==
+  dependencies:
+    google-libphonenumber "^3.1.6"
+    validator "10.4.0"
 
 cli-boxes@^1.0.0:
   version "1.0.0"
@@ -995,6 +1010,14 @@ core-js@^2.4.0, core-js@^2.5.0:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
   integrity sha512-klh/kDpwX8hryYL14M9w/xei6vrv6sE8gTHDG7/T/+SEovB/G4ejwcfE/CBzO6Edsu+OETZMZ3wcX/EjUkrl5A==
+
+"core-module@file:../../common/core/dist":
+  version "0.0.1"
+  dependencies:
+    "@nestjs/common" "^6.0.3"
+    "@nestjs/core" "^6.0.3"
+    reflect-metadata "^0.1.13"
+    rxjs "^6.4.0"
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -1748,6 +1771,11 @@ globals@^9.18.0:
   version "9.18.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
   integrity sha512-S0nG3CLEQiY/ILxqtztTWH/3iRRdyBLw6KMDxnKMchrtbj2OFmehVh0WUCfW3DUrIgx/qFrJPICrq4Z4sTR9UQ==
+
+google-libphonenumber@^3.1.6:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.2.tgz#3d9d7ba727e99a50812f21b0ed313723b76c5c54"
+  integrity sha512-ubjGeosYPeusjYbUHy76lCniGTTI0k1rIFc+uKBX+jHQLDmWOSUtlFUxaeoLJ+Y+PAMM6dWp+C1HjHx5BI8kEw==
 
 got@^6.7.1:
   version "6.7.1"
@@ -4725,6 +4753,11 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validator@10.4.0:
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-10.4.0.tgz#ee99a44afb3bb5ed350a159f056ca72a204cfc3c"
+  integrity sha512-Q/wBy3LB1uOyssgNlXSRmaf22NxjvDNZM2MtIQ4jaEOAB61xsh1TQxsq1CgzUMBV1lDrVMogIh8GjG1DYW0zLg==
 
 validator@10.8.0:
   version "10.8.0"

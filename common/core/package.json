@@ -1,5 +1,5 @@
 {
-  "name": "cassandra-module",
+  "name": "core-module",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
@@ -9,12 +9,8 @@
   "publish": false,
   "private": true,
   "dependencies": {
-    "@nestjs/common": "^6.0.2",
-    "@nestjs/core": "^6.0.2",
-    "cassandra-driver": "^4.0.0",
-    "class-transformer": "^0.2.0",
-    "class-validator": "^0.9.1",
-    "convict": "^4.4.1",
+    "@nestjs/common": "^6.0.3",
+    "@nestjs/core": "^6.0.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0"
   },

@@ -15,5 +15,5 @@
     "esModuleInterop": true
   },
   "include": ["services/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "common"]
+  "exclude": ["node_modules", "**/*.spec.ts", "common/cassandra", "common/core"]
 }
