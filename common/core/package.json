@@ -21,9 +21,11 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "postbuild": "cp yarn.lock package.json dist/ && cd dist/"
+    "postbuild": "cp yarn.lock package.json dist/ && cd dist/",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "devDependencies": {
-    "@types/node": "^11.11.6"
+    "@types/node": "^11.11.6",
+    "prettier": "^1.15.3"
   }
 }

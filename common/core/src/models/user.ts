@@ -1,4 +1,10 @@
-import { IsString, MinLength, MaxLength, IsEmail, IsNotEmpty } from "class-validator";
+import {
+  IsString,
+  MinLength,
+  MaxLength,
+  IsEmail,
+  IsNotEmpty,
+} from "class-validator";
 
 export class User {
   @IsString()

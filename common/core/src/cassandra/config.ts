@@ -1,22 +1,22 @@
-import convict from 'convict';
+import convict from "convict";
 
 const config = convict({
   cassandra: {
     host: {
-      default: '127.0.0.1',
-      env: 'CASSANDRA_HOST',
+      default: "127.0.0.1",
+      env: "CASSANDRA_HOST",
     },
     port: {
       default: 9042,
-      env: 'CASSANDRA_PORT',
+      env: "CASSANDRA_PORT",
     },
     dataCenter: {
-      default: 'datacenter1',
-      env: 'CASSANDRA_DATA_CENTER',
+      default: "datacenter1",
+      env: "CASSANDRA_DATA_CENTER",
     },
     keyspace: {
-      default: 'twtrmicro',
-      env: 'CASSANDRA_KEYSPACE',
+      default: "twtrmicro",
+      env: "CASSANDRA_KEYSPACE",
     },
   },
 });

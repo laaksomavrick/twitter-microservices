@@ -1,6 +1,11 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {
+  Injectable,
+  NestInterceptor,
+  ExecutionContext,
+  CallHandler,
+} from "@nestjs/common";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 export interface Response {
   // status: number;
@@ -9,7 +14,10 @@ export interface Response {
 
 @Injectable()
 export class ApiResponseInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable<Response> {
+  intercept(
+    context: ExecutionContext,
+    next: CallHandler,
+  ): Observable<Response> {
     return next.handle().pipe(map(data => ({ data })));
   }
 }

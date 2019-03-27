@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
-import { CassandraModule } from 'core-module';
+import { Module } from "@nestjs/common";
+import { CassandraModule } from "core-module";
+import { UsersController } from "./users.controller";
+import { UsersService } from "./users.service";
 
 @Module({
   imports: [CassandraModule],

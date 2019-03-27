@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
-import { CassandraService } from './cassandra.service';
-import { CassandraClientProviderModule } from './cassandra-client-provider.module';
+import { Module } from "@nestjs/common";
+import { CassandraService } from "./cassandra.service";
+import { CassandraClientProviderModule } from "./cassandra-client-provider.module";
 
 @Module({
   imports: [CassandraClientProviderModule],
