@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { Client } from "cassandra-driver";
-import { camelCase } from "change-case";
+import { camelCase, snakeCase } from "change-case";
 import { plainToClass } from "class-transformer";
 import { ClassType } from "class-transformer/ClassTransformer";
 import { CASSANDRA_CLIENT } from "./cassandra-client-provider.module";
@@ -19,6 +19,37 @@ export class CassandraService {
       const camelized = this.camelizeObject<T>(row);
       return plainToClass(ctor, camelized);
     });
+  }
+
+  async insert<T>(table: string, model: T): Promise<T> {
+    // todo: createdAt, updatedAt as options
+
+    const sorter = (a: any, b: any) => {
+      if (a < b) {
+        return -1;
+      } else if (a > b) {
+        return 1;
+      } else {
+        return 0;
+      }
+    };
+
+    const keys = Object.keys(model)
+      .map((key: string) => snakeCase(key))
+      .sort(sorter);
+
+    const values = Object.entries(model)
+      .map(([key, value]) => ({ key, value }))
+      .sort((a, b) => sorter(a.key, b.key))
+      .map(adhoc => adhoc.value);
+
+    const paramaterized = keys.map(_ => "?");
+
+    const query = `INSERT INTO ${table} (${keys.join(
+      ",",
+    )}) VALUES (${paramaterized.join(",")})`;
+
+    return this.cassandraClient.execute(query, values);
   }
 
   private camelizeObject<T>(input: T): T {
