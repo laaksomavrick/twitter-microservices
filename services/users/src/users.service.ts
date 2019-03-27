@@ -3,9 +3,6 @@ import { CassandraService, User } from "core-module";
 
 @Injectable()
 export class UsersService {
-  // todo: remove need for this.cassandraClient in query
-  // cassandraService ie
-  // also, only one external module: core
   // class validator user
   constructor(private readonly cassandraService: CassandraService) {}
 

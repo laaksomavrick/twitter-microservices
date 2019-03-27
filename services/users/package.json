@@ -22,10 +22,12 @@
     "update:all": "rimraf dist && yarn update:core && yarn install --check-files"
   },
   "dependencies": {
-    "core-module": "file:../../common/core/dist",
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
+    "class-transformer": "^0.2.0",
+    "class-validator": "^0.9.1",
+    "core-module": "file:../../common/core/dist",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3"
