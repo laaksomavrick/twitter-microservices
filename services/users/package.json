@@ -18,12 +18,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "update:cassandra": "cd ../../common/cassandra && rimraf dist && yarn build",
     "update:core": "cd ../../common/core && rimraf dist && yarn build",
-    "update:all": "rimraf dist && yarn update:cassandra && yarn update:core && yarn install --check-files"
+    "update:all": "rimraf dist && yarn update:core && yarn install --check-files"
   },
   "dependencies": {
-    "cassandra-module": "file:../../common/cassandra/dist",
     "core-module": "file:../../common/core/dist",
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
