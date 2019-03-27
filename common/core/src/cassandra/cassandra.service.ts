@@ -4,6 +4,8 @@ import { camelCase, snakeCase } from "change-case";
 import { plainToClass } from "class-transformer";
 import { ClassType } from "class-transformer/ClassTransformer";
 import { CASSANDRA_CLIENT } from "./cassandra-client-provider.module";
+import { validate, ValidationError } from "class-validator";
+import { CassandraValidationError } from "./cassandra.errors";
 
 @Injectable()
 export class CassandraService {
@@ -21,7 +23,7 @@ export class CassandraService {
     });
   }
 
-  async insert<T>(table: string, model: T): Promise<T> {
+  async insert<T>(ctor: ClassType<T>, table: string, model: object): Promise<T> {
     // todo: createdAt, updatedAt as options
 
     const sorter = (a: any, b: any) => {
@@ -33,6 +35,12 @@ export class CassandraService {
         return 0;
       }
     };
+
+    const classModel = plainToClass(ctor, model);
+    const errors = await validate(classModel);
+    if (errors.length > 0) {
+      throw new CassandraValidationError(table, errors);
+    } 
 
     const keys = Object.keys(model)
       .map((key: string) => snakeCase(key))
@@ -49,7 +57,8 @@ export class CassandraService {
       ",",
     )}) VALUES (${paramaterized.join(",")})`;
 
-    return this.cassandraClient.execute(query, values);
+    await this.cassandraClient.execute(query, values);
+    return classModel;
   }
 
   private camelizeObject<T>(input: T): T {
