@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { CassandraService, User } from "core-module";
+import { CreateUserDto } from "./user.interfaces";
 
 @Injectable()
 export class UsersService {
@@ -16,5 +17,10 @@ export class UsersService {
     }
 
     return users[0];
+  }
+
+  async create(user: CreateUserDto): Promise<User> {
+    // todo: data munging e.g bcrypt on password
+    return this.cassandraService.insert<User>(User, "users", user);
   }
 }
