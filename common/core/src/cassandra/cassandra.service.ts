@@ -3,8 +3,8 @@ import { Client } from "cassandra-driver";
 import { camelCase, snakeCase } from "change-case";
 import { plainToClass } from "class-transformer";
 import { ClassType } from "class-transformer/ClassTransformer";
+import { validate } from "class-validator";
 import { CASSANDRA_CLIENT } from "./cassandra-client-provider.module";
-import { validate, ValidationError } from "class-validator";
 import { CassandraValidationError } from "./cassandra.errors";
 
 @Injectable()
@@ -23,7 +23,11 @@ export class CassandraService {
     });
   }
 
-  async insert<T>(ctor: ClassType<T>, table: string, model: object): Promise<T> {
+  async insert<T>(
+    ctor: ClassType<T>,
+    table: string,
+    model: object,
+  ): Promise<T> {
     // todo: createdAt, updatedAt as options
 
     const sorter = (a: any, b: any) => {
@@ -37,16 +41,16 @@ export class CassandraService {
     };
 
     const classModel = plainToClass(ctor, model);
-    const errors = await validate(classModel);
+    const errors = await validate(classModel, { whitelist: true });
     if (errors.length > 0) {
       throw new CassandraValidationError(table, errors);
-    } 
+    }
 
-    const keys = Object.keys(model)
+    const keys = Object.keys(classModel)
       .map((key: string) => snakeCase(key))
       .sort(sorter);
 
-    const values = Object.entries(model)
+    const values = Object.entries(classModel)
       .map(([key, value]) => ({ key, value }))
       .sort((a, b) => sorter(a.key, b.key))
       .map(adhoc => adhoc.value);

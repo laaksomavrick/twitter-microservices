@@ -14,6 +14,9 @@
     "baseUrl": "./src",
     "esModuleInterop": true
   },
-  "include": ["services/**/*.ts"],
+  "include": [
+    "services/**/*.ts",
+    "common/core/src/cassandra/cassandra-exception-filter.ts"
+  ],
   "exclude": ["node_modules", "**/*.spec.ts", "common/cassandra", "common/core"]
 }

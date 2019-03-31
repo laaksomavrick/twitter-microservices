@@ -5,10 +5,13 @@ import {
   Get,
   Param,
   Post,
+  UsePipes,
+  ValidationPipe,
 } from "@nestjs/common";
 import { User } from "core-module";
+import { CreateUserDto } from "./user.models";
 import { UsersService } from "./users.service";
-import { CreateUserDto } from "./user.interfaces";
+import { Validator } from "class-validator";
 
 @Controller("users")
 export class UsersController {
@@ -24,17 +27,14 @@ export class UsersController {
   }
 
   @Post()
+  @UsePipes(ValidationPipe)
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
-    // todo: validations via ValidationPipe for dto e.g password, passwordCOnfirm
-    // todo: standard error handler / response fmt; { statusCode, msg, errors }
-
-    const user = {
-      username: "asdasdasdasd",
-      password: "qweqweqweqwe",
-      email: "email@hotmail.com",
-      displayName: "displayName",
-    };
-
-    return this.userService.create(user as CreateUserDto);
+    const { password, passwordConfirmation } = createUserDto;
+    if (password !== passwordConfirmation) {
+      throw new BadRequestException(
+        "password must be the same as passwordConfirmation",
+      );
+    }
+    return this.userService.create(createUserDto);
   }
 }

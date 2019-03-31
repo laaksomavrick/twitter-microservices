@@ -1,10 +1,11 @@
 import { NestFactory } from "@nestjs/core";
+import { appFactory } from "core-module";
 import { AppModule } from "./app.module";
-import { ApiResponseInterceptor } from "core-module";
+import config from "./config";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useGlobalInterceptors(new ApiResponseInterceptor());
-  await app.listen(3000);
+  let app = await NestFactory.create(AppModule);
+  app = appFactory(app);
+  await app.listen(config.get("users.port"));
 }
 bootstrap();
