@@ -1,13 +1,13 @@
 import {
-  Allow,
-  IsNotEmpty,
-  IsOptional,
   IsString,
-  MaxLength,
   MinLength,
+  MaxLength,
+  IsEmail,
+  IsNotEmpty,
+  Allow,
 } from "class-validator";
 
-export class User {
+export class UserProfile {
   @IsString()
   @IsNotEmpty()
   @MinLength(2)
@@ -15,14 +15,13 @@ export class User {
   @Allow()
   readonly username: string;
 
+  @IsEmail()
+  @IsNotEmpty()
+  @Allow()
+  readonly email: string;
+
   @IsString()
   @IsNotEmpty()
-  @MinLength(8)
-  @MaxLength(128)
   @Allow()
-  readonly password: string;
-
-  @IsOptional()
-  @Allow()
-  readonly accessToken?: string;
+  readonly displayName: string;
 }

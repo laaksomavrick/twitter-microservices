@@ -1,3 +1,3 @@
 export * from "./http";
-export * from "./models/user";
+export * from "./models";
 export * from "./cassandra";
