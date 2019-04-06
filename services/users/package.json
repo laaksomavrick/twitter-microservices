@@ -25,6 +25,8 @@
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
+    "@types/amqplib": "^0.5.11",
+    "amqplib": "^0.5.3",
     "bcrypt": "^3.0.5",
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1",
