@@ -1,5 +1,6 @@
 import {
   Allow,
+  IsEmail,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -15,6 +16,11 @@ export class User {
   @Allow()
   readonly username: string;
 
+  @IsEmail()
+  @IsNotEmpty()
+  @Allow()
+  readonly email: string;
+
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
@@ -24,5 +30,5 @@ export class User {
 
   @IsOptional()
   @Allow()
-  readonly accessToken?: string;
+  readonly refreshToken?: string;
 }
