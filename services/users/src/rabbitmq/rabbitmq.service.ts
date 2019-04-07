@@ -43,7 +43,12 @@ export class RabbitmqService {
     const { queue } = await this.channel.assertQueue(null, { exclusive: true });
     await this.channel.bindQueue(queue, exchange, topic);
 
-    this.channel.consume(queue, callback, { noAck: true });
+    const parsedBufferCallback = buffer => {
+      const payload = JSON.parse(buffer.content.toString());
+      return callback(payload);
+    };
+
+    this.channel.consume(queue, parsedBufferCallback, { noAck: true });
   }
 
   public async subscribe(
