@@ -29,4 +29,27 @@ export class RabbitmqService {
   public async publish(topic: string, json: object): Promise<void> {
     await this.configurablePublish(this.EXCHANGE, this.TYPE, topic, json);
   }
+
+  public async configurableSubscribe(
+    exchange: string,
+    type: string,
+    topic: string,
+    callback: (msg: any) => any,
+  ): Promise<void> {
+    await this.channel.assertExchange(exchange, type, {
+      // todo: investigate how to configure this for use case
+      durable: false,
+    });
+    const { queue } = await this.channel.assertQueue(null, { exclusive: true });
+    await this.channel.bindQueue(queue, exchange, topic);
+
+    this.channel.consume(queue, callback, { noAck: true });
+  }
+
+  public async subscribe(
+    topic: string,
+    callback: (msg: any) => any,
+  ): Promise<void> {
+    await this.configurableSubscribe(this.EXCHANGE, this.TYPE, topic, callback);
+  }
 }
