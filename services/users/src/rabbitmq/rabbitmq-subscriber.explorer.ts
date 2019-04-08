@@ -26,11 +26,7 @@ export class RabbitmqSubscriberExplorer {
     const instanceWrappers: InstanceWrapper<Controller>[] = [];
     controllersMap.forEach(map => {
       const mapKeys = [...map.keys()];
-      instanceWrappers.push(
-        ...mapKeys.map(key => {
-          return map.get(key);
-        }),
-      );
+      instanceWrappers.push(...mapKeys.map(key => map.get(key)));
     });
 
     // find the handlers marked with @Subscribe
@@ -40,17 +36,13 @@ export class RabbitmqSubscriberExplorer {
         return this.metadataScanner.scanFromPrototype(
           instance,
           instancePrototype,
-          method =>
-            this.exploreMethodMetadata(instance, instancePrototype, method),
+          method => this.exploreMethodMetadata(instancePrototype, method),
         );
       })
-      .reduce((prev, curr) => {
-        return prev.concat(curr);
-      });
+      .reduce((prev, curr) => prev.concat(curr));
   }
 
   public exploreMethodMetadata(
-    instance: object,
     instancePrototype: Controller,
     methodKey: string,
   ): RabbitSubscriberMetadataConfiguration | null {

@@ -19,11 +19,10 @@ export class RabbitmqModule implements OnModuleInit {
     // find everything marked with @Subscribe
     const subscribers = this.explorer.explore();
     // set up subscriptions
-    for (const subscriber of subscribers) {
-      await this.rabbitmqService.subscribe(
-        subscriber.topic,
-        subscriber.callback,
-      );
-    }
+    await Promise.all(
+      subscribers.map(({ topic, callback }) =>
+        this.rabbitmqService.subscribe(topic, callback),
+      ),
+    );
   }
 }
