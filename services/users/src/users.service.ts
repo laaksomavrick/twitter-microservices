@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import bcrypt from "bcrypt";
-import { CassandraService, User } from "core-module";
-import { RabbitmqService } from "./rabbitmq/rabbitmq.service";
+import { CassandraService, RabbitmqService, User } from "core-module";
 import { CreateUserDto } from "./users.models";
 
 @Injectable()

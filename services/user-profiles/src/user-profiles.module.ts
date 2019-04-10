@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
-import { CassandraModule } from "core-module";
+import { CassandraModule, RabbitmqModule } from "core-module";
 import { UserProfilesController } from "./user-profiles.controller";
 import { UserProfilesService } from "./user-profiles.service";
 
 @Module({
-  imports: [CassandraModule],
+  imports: [CassandraModule, RabbitmqModule],
   controllers: [UserProfilesController],
   providers: [UserProfilesService],
 })

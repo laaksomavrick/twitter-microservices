@@ -58,20 +58,9 @@
     consola "^2.3.0"
     node-fetch "^2.3.0"
 
-"@types/amqplib@^0.5.11":
-  version "0.5.11"
-  resolved "https://registry.yarnpkg.com/@types/amqplib/-/amqplib-0.5.11.tgz#32b0fe3d8e3aa4c749b300d232da15900908e816"
-  dependencies:
-    "@types/bluebird" "*"
-    "@types/node" "*"
-
 "@types/bcrypt@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/bcrypt/-/bcrypt-3.0.0.tgz#851489a9065a067cb7f3c9cbe4ce9bed8bba0876"
-
-"@types/bluebird@*":
-  version "3.5.26"
-  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.26.tgz#a38c438ae84fa02431d6892edf86e46edcbca291"
 
 "@types/body-parser@*":
   version "1.17.0"
@@ -956,6 +945,7 @@ core-js@^2.4.0, core-js@^2.5.0:
   dependencies:
     "@nestjs/common" "^6.0.3"
     "@nestjs/core" "^6.0.3"
+    amqplib "^0.5.3"
     cassandra-driver "^4.0.0"
     change-case "^3.1.0"
     class-transformer "^0.2.0"

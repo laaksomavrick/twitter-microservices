@@ -9,7 +9,6 @@ import {
 import { User } from "core-module";
 import { CreateUserDto } from "./users.models";
 import { UsersService } from "./users.service";
-import { Subscribe } from "./rabbitmq/rabbitmq.decorators";
 
 @Controller("users")
 export class UsersController {
@@ -29,11 +28,4 @@ export class UsersController {
     }
     return this.userService.create(createUserDto);
   }
-
-  @Subscribe("twtrmicro.user.create")
-  async handleUserCreated(message: object): Promise<void> {
-    console.log(message);
-  }
-
-  async authorize(): Promise<any> {}
 }
